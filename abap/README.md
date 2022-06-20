@@ -23,8 +23,11 @@ This sample contains:
 #### Local Machine
 - Download [ABAP Development Tools](https://tools.hana.ondemand.com/#abap) and connect them to your ABAP Environment
 - Download [Adobe LiveCycle Designer](https://launchpad.support.sap.com/#/softwarecenter/template/products/_APP=00200682500000001943&_EVENT=NEXT&HEADER=Y&FUNCTIONBAR=Y&EVENT=TREE&NE=NAVIGATE&ENR=73554900100800002751&V=MAINT&TA=ACTUAL/ADOBE%20LIVECYCLE%20DESIGNER) from SAP Software Marketplace
+- Download [SAP Cloud Print Manager for Pull Integration](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100100001346&V=MAINT&TA=ACTUAL&PAGE=SEARCH/SAP%20CLOUD%20PRINT%20MANAGER)
 
 ### Assign Roles
 - `ADSAdmin` for accessing SAP Forms Service by Adobe Config UI (used for maintaining fonts, xdc, xci, etc.)
 - `TemplateStoreAdmin` for accessing the Template Store UI
 
+### Setup
+#### 
