@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Destination for billing example'
+define service ZDSAG_BILLING_SRV_DEF {
+  expose ZI_DSAG_BILL_ITEM;
+  expose ZI_DSAG_BILL_ORDER;
+  expose ZI_DSAG_PRODUCT;
+  expose ZI_DSAG_RECEIVER;
+}
