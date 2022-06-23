@@ -31,7 +31,7 @@ This sample contains:
 #### Local Machine
 - Download [ABAP Development Tools](https://tools.hana.ondemand.com/#abap) and connect them to your ABAP Environment
 - Download [Adobe LiveCycle Designer](https://launchpad.support.sap.com/#/softwarecenter/template/products/_APP=00200682500000001943&_EVENT=NEXT&HEADER=Y&FUNCTIONBAR=Y&EVENT=TREE&NE=NAVIGATE&ENR=73554900100800002751&V=MAINT&TA=ACTUAL/ADOBE%20LIVECYCLE%20DESIGNER) from SAP Software Marketplace
-- Download [SAP Cloud Print Manager for Pull Integration](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100100001346&V=MAINT&TA=ACTUAL&PAGE=SEARCH/SAP%20CLOUD%20PRINT%20MANAGER) from SAP Software Marketplace
+- Download [SAP Cloud Print Manager for Pull Integration](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100100001346&V=MAINT&TA=ACTUAL&PAGE=SEARCH/SAP%20CLOUD%20PRINT%20MANAGER) (select PI) from SAP Software Marketplace
 
 ### Setup
 #### SAP Forms Service by Adobe
@@ -50,25 +50,25 @@ This sample contains:
 1. Navigate to app: **Maintain Communication Users** and create a new user with username + password (used for accessing the print queue)
 2. Navigate to app: **Communication Systems**
 3. Create a new communication system (to connect to Forms Service by Adobe service instance)
-    - System ID: \<any name\>
-    - System Name: \<any name\>
-    - Host Name: \<**uri** in service key\>
-    - Auth. Endpoint: \<**uaa.url** in service key>/oauth/authorize
-    - Token Endpoint: \<**uaa.url** in service key>/oauth/token
+    - System ID: `any name`
+    - System Name: `any name`
+    - Host Name: `uri in service key`
+    - Auth. Endpoint: `uaa.url in service key>/oauth/authorize`
+    - Token Endpoint: `uaa.url in service key>/oauth/token`
     - Create new **Users for Outbound Communication**:
-        - Authentication Method: OAuth 2.0
-        - OAuth 2.0 Client ID: \<**uaa.clientid** in service key\>
-        - Client Secret: \<**uaa.clientsecret** in service key\>
+        - Authentication Method: `OAuth 2.0`
+        - OAuth 2.0 Client ID: `uaa.clientid in service key`
+        - Client Secret: `uaa.clientsecret in service key`
     - Save the system
 4. Navigate to app: **Communication Arrangement**
 5. Create a new communication arrangement (scenario: SAP_COM_0503):
-    - Communication System: \<System that connects to Forms Service by Adobe service instance\>
-    - OAuth 2.0 Client ID: \<Should be auto selected\>
-    - Path: /AdobeDocumentServicesSec/Config
+    - Communication System: `System that connects to Forms Service by Adobe service instance`
+    - OAuth 2.0 Client ID: `Should be auto selected`
+    - Path: `/AdobeDocumentServicesSec/Config`
 6. Check connection should return following error: **Method Not Allowed (405)**
 7. Create a new communication arrangement (scenario: SAP_COM_0276) with service key of destination service instance
 8. Create a new communication arrangement (scenario: SAP_COM_0466):
-    - Inbound Communication: \<select communication user for print_queue\>
+    - Inbound Communication: `select communication user for print_queue`
 9. Navigate to app: **Maintain Print Queues**
 10. Create a new print queue, select communication user for print queue
     
@@ -76,9 +76,9 @@ This sample contains:
 1. Start Destop App
 2. Start all needed services
 3. Create a new runtime system:
-    - SAP System URL: \<click button: **System URL** in Maintain Print Queues app\>
-    - User: \<username of communication user\>
-    - Password: \<password of communication user\>
+    - SAP System URL: `click button: System URL in Maintain Print Queues app`
+    - User: `username of communication user`
+    - Password: `password of communication user`
 4. Double click print queue and maintain settings
 
 ### Execute example
