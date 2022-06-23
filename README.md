@@ -1,6 +1,6 @@
 # SAP Forms Service by Adobe Samples
 
-Example projects to illustrate how the SAP Forms Service could be integrated into various projects and platforms.
+Example projects to illustrate how the SAP Forms Service by Adobe could be integrated into various projects and platforms.
 Overview:
  - [Integrate SAP Forms Service by Adobe with ABAP Environment](https://github.com/SAP-samples/sap-forms-service-by-adobe-samples/tree/main/abap)
 
