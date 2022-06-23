@@ -6,10 +6,18 @@ This sample contains:
 
 ## Table of contents
 
-+ [Prerequisites](#prerequisites)
-    - [SAP Business Technology Platform](#sap-business-technology-platform)
-    - [Local Machine](#local-machine)
-+ [Assign Roles](#assign-roles)
+- [Prerequisites](#prerequisites)
+  * [SAP Business Technology Platform](#sap-business-technology-platform)
+  * [Local Machine](#local-machine)
+- [Setup](#setup)
+  * [SAP Forms Service by Adobe](#sap-forms-service-by-adobe)
+  * [Destination](#destination)
+  * [ABAP Environment](#abap-environment)
+  * [SAP Cloud Print Manager for Pull Integration](#sap-cloud-print-manager-for-pull-integration)
+- [Execute example](#execute-example)
+  * [Upload demo template](#upload-demo-template)
+  * [Create test data](#create-test-data)
+  * [Execute Scenario](#execute-scenario)
 
 ### Prerequisites
 #### SAP Business Technology Platform
@@ -68,9 +76,9 @@ This sample contains:
 1. Start Destop App
 2. Start all needed services
 3. Create a new runtime system:
-    - SAP System URL: <click button: System URL in Maintain Print Queues app>
-    - User: <username of communication user>
-    - Password: <password of communication user>
+    - SAP System URL: \<click button: **System URL** in Maintain Print Queues app\>
+    - User: \<username of communication user\>
+    - Password: \<password of communication user\>
 4. Double click print queue and maintain settings
 
 ### Execute example
