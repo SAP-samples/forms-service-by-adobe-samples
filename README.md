@@ -8,6 +8,9 @@ Overview:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
 -->
 
+## How to obtain support
+In case you've a question, or otherwise need support, use the [SAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce) to get more visibility.
+
 ## Report an Issue
 If you find a bug in these sample projects you are welcome to report it. We can only handle well-reported, actual bugs, so please follow the guidelines below and use forums like StackOverflow / SAP Community for support questions or when in doubt whether the issue is an actual bug. These samples are given as is and represent a good starting point for your project. We do not support any custom implemention.
 
@@ -41,9 +44,6 @@ These eight requirements are the mandatory base of a good bug report:
    - give information about the used browser/device and its version, if possible also the behavior in other browsers/devices
    - generally give as much additional information as possible. (But find the right balance: do not invest hours for a very obvious and easy to solve issue. When in doubt, give more information.)
 7. Only one bug per report: open different tickets for different issues
-
-## How to obtain support
-In case you've a question, or otherwise need support, use the [SAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce) to get more visibility.
 
 ## License
 Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
