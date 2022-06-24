@@ -1,4 +1,4 @@
-# Integrate SAP Forms Service by Adobe with ABAP Environment
+# Integrate SAP Forms Service by Adobe with ABAP Environment in Cloud Foundry
 
 This sample contains:
 - Short guide what service is needed and how to set them up
@@ -25,7 +25,7 @@ This sample contains:
 - Order [SAP Forms Service by Adobe](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
 - Order [SAP Forms Service by Adobe API](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
 - Order [ABAP Environment](https://discovery-center.cloud.sap/serviceCatalog/abap-environment?region=all) via Service Marketplace
-- Order [Destination](https://discovery-center.cloud.sap/serviceCatalog/destination?service_plan=lite&region=all&licenseModel=cpea) via Service Marketplace
+- Use [Destination service](https://discovery-center.cloud.sap/serviceCatalog/destination?service_plan=lite&region=all&licenseModel=cpea) via Service Marketplace
 - Perform basic [ABAP Environment Setup](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/a999fac2a578468ea0e4e320c82145ce.html).
 
 #### Local Machine
