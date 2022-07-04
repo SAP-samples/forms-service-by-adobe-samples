@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/sap-forms-service-by-adobe-samples)](https://api.reuse.software/info/github.com/SAP-samples/sap-forms-service-by-adobe-samples)
+
 # SAP Forms Service by Adobe Samples
 
 Example projects to illustrate how the SAP Forms Service by Adobe could be integrated into various projects and platforms.
