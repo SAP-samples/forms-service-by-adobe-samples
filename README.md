@@ -1,4 +1,4 @@
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/forms-service-by-adobe-samples)](https://api.reuse.software/info/github.com/SAP-samples/sap-forms-service-by-adobe-samples)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/forms-service-by-adobe-samples)](https://api.reuse.software/info/github.com/SAP-samples/forms-service-by-adobe-samples)
 
 # SAP Forms Service by Adobe Samples
 
