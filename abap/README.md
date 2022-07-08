@@ -86,11 +86,11 @@ This sample contains:
 #### Upload demo template
 1. [Access Template Store Admin UI](https://help.sap.com/docs/CP_FORMS_BY_ADOBE/dcbea777ceb3411cb10500a1a392273e/1069ce905dda4481a89f13a8b6c20ac1.html/#result)
 2. Create a new Form
-3. Upload [Demo Template](https://github.com/SAP-samples/sap-forms-service-by-adobe-samples/blob/main/abap/Form.xdp)
+3. Upload [Demo Template](https://github.com/SAP-samples/forms-service-by-adobe-samples/blob/main/abap/Form.xdp)
 
 #### Create test data
 
-1. Import the project: https://github.com/SAP-samples/sap-forms-service-by-adobe-samples.git via abapGit plugin in ADT
+1. Import the project: https://github.com/SAP-samples/forms-service-by-adobe-samples.git via abapGit plugin in ADT
 2. Activate all imported objects
 3. Execute class **zcl_dsag_fill_data** with \[F9\]
 
