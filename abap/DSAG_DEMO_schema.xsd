@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xfadata="http://www.xfa.org/schema/xfa-data/1.0/">
+ <element name="Form">
+  <complexType>
+   <sequence>
+    <element name="ZI_DSAG_BILL_ORDER" type="ZI_DSAG_BILL_ORDER"/>
+   </sequence>
+  </complexType>
+ </element>
+ <complexType name="ZI_DSAG_BILL_ITEM">
+  <sequence>
+   <element name="ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="AMOUNT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title="INT4"/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="BILL_ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="PRODUCT_ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="PRICE_SUM">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="22"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="_PRODUCT" type="ZI_DSAG_PRODUCT" minOccurs="1" maxOccurs="1"/>
+  </sequence>
+ </complexType>
+ <complexType name="ZI_DSAG_BILL_ORDER">
+  <sequence>
+   <element name="ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="RECEIVER_ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="CREATED_AT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title="Time Stamp"/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="19"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PAYMENT_METHOD">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SUM_EXCL_VAT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SUM_VAT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SUM_ALL">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CURRENCY">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="_ITEMS">
+    <complexType>
+     <sequence>
+      <element name="ZI_DSAG_BILL_ITEM" type="ZI_DSAG_BILL_ITEM" minOccurs="0" maxOccurs="unbounded"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="_RECEIVER" type="ZI_DSAG_RECEIVER" minOccurs="1" maxOccurs="1"/>
+  </sequence>
+ </complexType>
+ <complexType name="ZI_DSAG_PRODUCT">
+  <sequence>
+   <element name="ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="NAME">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PRICE">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CURRENCY">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VAT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EAN">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="13"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PRICE_WITH_VAT">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="22"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ZI_DSAG_RECEIVER">
+  <sequence>
+   <element name="ID">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="int"/>
+    </simpleType>
+   </element>
+   <element name="NAME">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="STREET">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ZIP">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="COUNTRY">
+    <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <appinfo dc:title=""/>
+    </annotation>
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="0"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+</schema>
