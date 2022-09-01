@@ -22,11 +22,11 @@ This sample contains:
 ### Prerequisites
 #### SAP Business Technology Platform
 - Create or use an existing account on [SAP Business Technology Platform](https://www.sap.com/germany/products/business-technology-platform.html)
-- Order [SAP Forms Service by Adobe](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
-- Order [SAP Forms Service by Adobe API](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
-- Order [ABAP Environment](https://discovery-center.cloud.sap/serviceCatalog/abap-environment?region=all) via Service Marketplace
-- Use [Destination service](https://discovery-center.cloud.sap/serviceCatalog/destination?service_plan=lite&region=all&licenseModel=cpea) via Service Marketplace
-- Perform basic [ABAP Environment Setup](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/a999fac2a578468ea0e4e320c82145ce.html).
+- Order [SAP Forms service by Adobe](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
+- Order [SAP Forms service by Adobe API](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe?region=all) via Service Marketplace
+- Order [ABAP environment](https://discovery-center.cloud.sap/serviceCatalog/abap-environment?region=all) via Service Marketplace
+- Use [SAP Destination service](https://discovery-center.cloud.sap/serviceCatalog/destination?service_plan=lite&region=all&licenseModel=cpea) via Service Marketplace
+- Perform basic [SAP BTP, ABAP environment Setup](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/a999fac2a578468ea0e4e320c82145ce.html).
 
 #### Local Machine
 - Download [ABAP Development Tools](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=01200314690100008586&V=MAINT&TA=ACTUAL&PAGE=SEARCH/SAP%20ABAP%20IN%20ECLIPSE) and connect them to your ABAP Environment
@@ -42,7 +42,7 @@ This sample contains:
 3. Create new instance and service key for service: **Forms Service by Adobe** (plan: standard)
 4. Create new instance and service key for service: **Forms Service by Adobe API** (plan: standard)
 
-#### Destination
+#### SAP Destination service
 1. Create new instance and service key for service: **Destination**
 2. Maintain a new destination pointing to service instance of **Forms Service by Adobe API** using the corresponding service key
 
