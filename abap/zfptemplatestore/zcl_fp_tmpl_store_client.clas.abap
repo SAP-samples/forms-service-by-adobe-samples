@@ -57,7 +57,8 @@ CLASS zcl_fp_tmpl_store_client DEFINITION
     METHODS:
       constructor
         IMPORTING
-          iv_name                    type string
+          iv_use_destination_service type abap_boolean DEFAULT abap_true
+          iv_name                    type string OPTIONAL
           iv_service_instance_name   type string
         RAISING
           zcx_fp_tmpl_store_error,
@@ -167,7 +168,14 @@ CLASS zcl_fp_tmpl_store_client DEFINITION
           zcx_fp_tmpl_store_error.
   PROTECTED SECTION.
   PRIVATE SECTION.
+    data:
+      mv_use_dest_srv type abap_boolean.
     methods:
+      __close_request,
+      __conv_path
+        IMPORTING
+          iv_path type string
+        RETURNING VALUE(rv_path) type string,
       __get_request
         returning value(ro_request) type ref to if_web_http_request,
       __json2abap
@@ -187,14 +195,23 @@ ENDCLASS.
 
 
 
-CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
+CLASS ZCL_FP_TMPL_STORE_CLIENT IMPLEMENTATION.
+
+
   METHOD constructor.
     try.
-      mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
-        i_service_instance_name = conv #( iv_service_instance_name )
-        i_name                  = iv_name
-        i_authn_mode            = if_a4c_cp_service=>service_specific
-      ).
+      mv_use_dest_srv = iv_use_destination_service.
+      if iv_use_destination_service = abap_true.
+        mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
+          i_service_instance_name = conv #( iv_service_instance_name )
+          i_name                  = iv_name
+          i_authn_mode            = if_a4c_cp_service=>service_specific
+        ).
+      else.
+        mo_http_destination = cl_http_destination_provider=>create_by_comm_arrangement(
+          comm_scenario           = conv #( iv_service_instance_name )
+        ).
+      endif.
       mv_client = cl_web_http_client_manager=>create_by_http_destination( mo_http_destination ).
     CATCH
       cx_web_http_client_error
@@ -205,14 +222,17 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
   METHOD delete_form.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }| ) ).
     data(lo_response) = __execute(
       i_method = if_web_http_client=>delete
       i_expect = 200
     ).
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD delete_schema_in_form.
     data(ls_schema) = me->get_schema_by_name(
@@ -221,26 +241,30 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
     ).
 
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ) ).
     lo_request->set_query( |allVersions=true| ).
     data(lo_response) = __execute(
       i_method = if_web_http_client=>delete
       i_expect = 200
     ).
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD delete_template_in_form.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }| ) ).
     data(lo_response) = __execute(
       i_method = if_web_http_client=>delete
       i_expect = 200
     ).
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_form_by_name.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_name }| ) ).
     lo_request->set_query( |formData| ).
     data(lo_response) = __execute(
       i_method = if_web_http_client=>get
@@ -263,11 +287,13 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       ).
 
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_schema_by_id.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/schema/{ iv_object_id }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/schema/{ iv_object_id }| ) ).
     lo_request->set_query( |select=xsdSchema,schemaData&isObjectId=true| ).
 
     data(lo_response) = __execute(
@@ -291,11 +317,13 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
           cr_abap_data = rs_schema
       ).
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_schema_by_name.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }| ) ).
     if iv_get_binary = abap_true.
       lo_request->set_query( |select=schemaData,xsdSchema| ).
     else.
@@ -335,7 +363,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       endif.
 
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_schema_history_by_name.
     data(ls_schema) = me->get_schema_by_name(
@@ -343,7 +373,7 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       iv_get_binary = abap_false
     ).
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ) ).
     lo_request->set_query( |select=schemaData,schemaVersions| ).
 
     data(lo_response) = __execute(
@@ -378,11 +408,13 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       endloop.
 
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_template_by_id.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates/{ iv_object_id }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates/{ iv_object_id }| ) ).
     lo_request->set_query( |select=xdpTemplate,templateData&isObjectId=true| ).
 
     data(lo_response) = __execute(
@@ -406,12 +438,14 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
             cr_abap_data = rs_template
       ).
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_template_by_name.
 
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ) ).
     if iv_get_binary = abap_true.
       lo_request->set_query( |select=xdpTemplate,templateData| ).
     else.
@@ -438,12 +472,13 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
             cr_abap_data = rs_template
       ).
     endif.
-
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD get_template_history_by_name.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ) ).
     lo_request->set_query( |select=templateData,templateVersions| ).
 
     data(lo_response) = __execute(
@@ -478,11 +513,13 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       endloop.
 
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD list_forms.
     DATA(lo_request) = __get_request( ).
-    lo_request->set_uri_path( |/v1/forms| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms| ) ).
     lo_request->set_query( |limit={ iv_limit }&offset={ iv_offset }&select=formData| ).
 
     data(lo_response) = __execute(
@@ -516,7 +553,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
         append ls_form to rt_forms.
       endloop.
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD list_templates.
     DATA(lo_request) = __get_request( ).
@@ -545,7 +584,7 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       lv_query = lv_query && |&templateName={ iv_template_name }|.
     endif.
 
-    lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates| ).
+    lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates| ) ).
     lo_request->set_query( |limit={ iv_limit }&offset={ iv_offset }&select=formData| ).
 
     data(lo_response) = __execute(
@@ -579,7 +618,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
 
       endloop.
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD set_form.
     data(lv_exists) = abap_false.
@@ -595,9 +636,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
 
     DATA(lo_request) = __get_request( ).
     if lv_exists = abap_true.
-      lo_request->set_uri_path( |/v1/forms/{ iv_form_name }| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }| ) ).
     else.
-      lo_request->set_uri_path( |/v1/forms| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms| ) ).
     ENDIF.
 
     DATA(lv_json) = /ui2/cl_json=>serialize(
@@ -620,7 +661,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
         i_method = if_web_http_client=>post
       ).
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD set_schema.
     data(lv_exists) = abap_false.
@@ -639,9 +682,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
 
     DATA(lo_request) = __get_request( ).
     if lv_exists = abap_true.
-      lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/schema/{ ls_schema-schema_name }| ) ).
     else.
-      lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/schema| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/schema| ) ).
     ENDIF.
 
     data(ls_body) = value ty_schema_body_in(
@@ -670,7 +713,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
         i_method = if_web_http_client=>post
       ).
     endif.
+    __close_request(  ).
   ENDMETHOD.
+
 
   METHOD set_template.
     data(lv_exists) = abap_false.
@@ -690,9 +735,9 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
 
     DATA(lo_request) = __get_request( ).
     if lv_exists = abap_true.
-      lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates/{ iv_template_name }| ) ).
     else.
-      lo_request->set_uri_path( |/v1/forms/{ iv_form_name }/templates| ).
+      lo_request->set_uri_path( __conv_path( |/v1/forms/{ iv_form_name }/templates| ) ).
     ENDIF.
 
     data(ls_body) = value ty_template_body_in(
@@ -727,8 +772,8 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
         i_method = if_web_http_client=>post
       ).
     endif.
+    __close_request(  ).
   ENDMETHOD.
-
 
 
   METHOD __execute.
@@ -748,6 +793,7 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
           mv_http_reason = lo_http_error->get_longtext( ).
     endtry.
   ENDMETHOD.
+
 
   METHOD __json2abap.
     data(lo_input_struct)   = cast cl_abap_structdescr( cl_abap_structdescr=>describe_by_data( p_data = ir_input_data ) ).
@@ -774,6 +820,24 @@ CLASS zcl_fp_tmpl_store_client IMPLEMENTATION.
       ( name = 'Accept' value = 'application/json, text/plain, */*'  )
       ( name = 'Content-Type' value = 'application/json;charset=utf-8'  )
     ) ).
+  ENDMETHOD.
+
+  METHOD __CONV_PATH.
+    rv_path = iv_path.
+    if mv_use_dest_srv = abap_false.
+      SHIFT rv_path left.
+    endif.
+  ENDMETHOD.
+
+  METHOD __close_request.
+    IF mv_use_dest_srv = abap_true.
+      EXIT.
+    ENDIF.
+
+    try.
+      mv_client->close(  ).
+    catch cx_web_http_client_error.
+    endtry.
   ENDMETHOD.
 
 ENDCLASS.

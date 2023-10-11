@@ -11,7 +11,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_dsag_execute_fdp IMPLEMENTATION.
+CLASS ZCL_DSAG_EXECUTE_FDP IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     try.
       "Initialize Template Store Client
@@ -19,6 +21,11 @@ CLASS zcl_dsag_execute_fdp IMPLEMENTATION.
         iv_name = 'restapi'
         iv_service_instance_name = 'SAP_COM_0276'
       ).
+      "Initialize Template Store Client (using custom comm scenario)
+      "data(lo_store) = new ZCL_FP_TMPL_STORE_CLIENT(
+      "  iv_service_instance_name = 'ZADSTEMPLSTORE'
+      "  iv_use_destination_service = abap_false
+      ").
       out->write( 'Template Store Client initialized' ).
       "Initialize class with service definition
       data(lo_fdp_util) = cl_fp_fdp_services=>get_instance( 'ZDSAG_BILLING_SRV_DEF' ).
@@ -75,10 +82,9 @@ CLASS zcl_dsag_execute_fdp IMPLEMENTATION.
       ).
       out->write( 'Output was sent to print queue' ).
 
-    catch cx_fp_fdp_error zcx_fp_tmpl_store_error cx_fp_ads_util.
+    catch cx_fp_fdp_error zcx_fp_tmpl_store_error cx_fp_ads_util into data(lo_err).
       out->write( 'Exception occurred.' ).
     endtry.
     out->write( 'Finished processing.' ).
   ENDMETHOD.
-
 ENDCLASS.
