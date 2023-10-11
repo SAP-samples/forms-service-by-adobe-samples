@@ -1,5 +1,7 @@
 # Integrate SAP Forms Service by Adobe with SAP BTP, ABAP Environment in Cloud Foundry
 
+[Detailed Blog Post describing the scope of this demo and setup](https://blogs.sap.com/2023/01/17/sap-forms-service-by-adobe-in-sap-btp-abap-environment/)
+
 This sample contains:
 - Short guide what service is needed and how to set them up
 - Example data + form template
