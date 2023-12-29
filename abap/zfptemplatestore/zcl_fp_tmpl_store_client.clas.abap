@@ -169,7 +169,9 @@ CLASS zcl_fp_tmpl_store_client DEFINITION
   PROTECTED SECTION.
   PRIVATE SECTION.
     data:
-      mv_use_dest_srv type abap_boolean.
+      mv_use_dest_srv type abap_boolean,
+      mv_name type string,
+      mv_instance_name type string.
     methods:
       __close_request,
       __conv_path
@@ -199,27 +201,36 @@ CLASS ZCL_FP_TMPL_STORE_CLIENT IMPLEMENTATION.
 
 
   METHOD constructor.
-    try.
-      mv_use_dest_srv = iv_use_destination_service.
-      if iv_use_destination_service = abap_true.
-        mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
-          i_service_instance_name = conv #( iv_service_instance_name )
-          i_name                  = iv_name
-          i_authn_mode            = if_a4c_cp_service=>service_specific
-        ).
-      else.
-        mo_http_destination = cl_http_destination_provider=>create_by_comm_arrangement(
-          comm_scenario           = conv #( iv_service_instance_name )
-        ).
-      endif.
-      mv_client = cl_web_http_client_manager=>create_by_http_destination( mo_http_destination ).
-    CATCH
-      cx_web_http_client_error
-      cx_http_dest_provider_error .
-      RAISE EXCEPTION type zcx_fp_tmpl_store_error
-        EXPORTING
-          textid = zcx_fp_tmpl_store_error=>setup_not_complete.
-    ENDTRY.
+    mv_use_dest_srv = iv_use_destination_service.
+    mv_instance_name = iv_service_instance_name.
+    mv_name = iv_name.
+*    TRY.
+*        mv_use_dest_srv = iv_use_destination_service.
+*        mv_instance_name = iv_service_instance_name.
+*        mv_name = iv_name.
+*
+*        IF iv_use_destination_service = abap_true.
+*          mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
+*            i_service_instance_name = CONV #( mv_instance_name )
+*            i_name                  = mv_name
+*            i_authn_mode            = if_a4c_cp_service=>service_specific
+*          ).
+*        ELSE.
+*          mo_http_destination = cl_http_destination_provider=>create_by_comm_arrangement(
+*            comm_scenario           = CONV #( mv_instance_name )
+*          ).
+*        ENDIF.
+*        mv_client = cl_web_http_client_manager=>create_by_http_destination( mo_http_destination ).
+*      CATCH
+*        cx_web_http_client_error INTO DATA(x).
+*        DATA(message) = x->get_text( ).
+*      CATCH
+*      cx_http_dest_provider_error INTO DATA(x2).
+*        message = x2->get_text( ).
+*        RAISE EXCEPTION TYPE zcx_fp_tmpl_store_error
+*          EXPORTING
+*            textid = zcx_fp_tmpl_store_error=>setup_not_complete.
+*    ENDTRY.
   ENDMETHOD.
 
 
@@ -815,6 +826,25 @@ CLASS ZCL_FP_TMPL_STORE_CLIENT IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD __get_request.
+    try.
+      if mv_client is BOUND.
+        mv_client->close(  ).
+      endif.
+      IF mv_use_dest_srv = abap_true.
+        mo_http_destination = cl_http_destination_provider=>create_by_cloud_destination(
+          i_service_instance_name = CONV #( mv_instance_name )
+          i_name                  = mv_name
+          i_authn_mode            = if_a4c_cp_service=>service_specific
+        ).
+      ELSE.
+        mo_http_destination = cl_http_destination_provider=>create_by_comm_arrangement(
+          comm_scenario           = CONV #( mv_instance_name )
+        ).
+      ENDIF.
+      mv_client = cl_web_http_client_manager=>create_by_http_destination( mo_http_destination ).
+    catch cx_web_http_client_error cx_http_dest_provider_error .
+    endtry.
+
     ro_request = mv_client->get_http_request( ).
     ro_request->set_header_fields( VALUE #(
       ( name = 'Accept' value = 'application/json, text/plain, */*'  )
@@ -830,14 +860,7 @@ CLASS ZCL_FP_TMPL_STORE_CLIENT IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD __close_request.
-    IF mv_use_dest_srv = abap_true.
-      EXIT.
-    ENDIF.
 
-    try.
-      mv_client->close(  ).
-    catch cx_web_http_client_error.
-    endtry.
   ENDMETHOD.
 
 ENDCLASS.
