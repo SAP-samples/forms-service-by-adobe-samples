@@ -1,5 +1,6 @@
 @EndUserText.label: 'DSAG Billing Order'
 @ObjectModel.query.implementedBy: 'ABAP:ZCL_DSAG_BO_IMPL'
+@ObjectModel.supportedCapabilities: [ #OUTPUT_FORM_DATA_PROVIDER  ]
 define custom entity ZI_DSAG_BILL_ORDER
 {
   key id         : abap.int4;
