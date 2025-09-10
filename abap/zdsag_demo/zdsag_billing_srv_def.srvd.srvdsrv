@@ -1,3 +1,4 @@
+@ObjectModel.leadingEntity.name: 'ZI_DSAG_BILL_ORDER'
 @EndUserText.label: 'Service Destination for billing example'
 define service ZDSAG_BILLING_SRV_DEF {
   expose ZI_DSAG_BILL_ITEM;
