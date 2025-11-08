@@ -7,7 +7,7 @@
 |**Generation Platform**<br>Visual Studio Code|
 |**Template Used**<br>Custom Page V4|
 |**Service Type**<br>OData Url|
-|**Service URL**<br>https://mqd-080-adm.devsys.net.sap/sap/opu/odata4/fdpt/cin_ui_sb/srvd_a2x/fdpt/c_ticket_sd/0001/|
+|**Service URL**<br>https://XXX/sap/opu/odata4/sap/zcine_app_ui_sb/srvd_a2x/sap/zcine_ticket_srvd/0001/|
 |**Module Name**<br>cinema|
 |**Application Title**<br>FDP Cinema Demo|
 |**Namespace**<br>com.sap.fp.demo|
