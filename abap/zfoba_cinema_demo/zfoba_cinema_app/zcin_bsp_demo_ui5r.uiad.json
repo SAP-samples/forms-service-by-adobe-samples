@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "FDP Cinema Demo"
+  },
+  "ui5AppDetails": {
+    "appId": "com.sap.fp.demo.cinema"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_031163C929BCFE4632852CF84ABFEB711ACDF6CF_TM",
+    "semanticObject": "Cinema",
+    "action": "maintain",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_031163C929BCFE4632852CF84ABFEB711ACDF6CF_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "FDP Cinema Demo",
+        "subtitle": "ADS by Example"
+      }
+    }
+  ]
+}

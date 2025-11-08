@@ -1,0 +1,31 @@
+managed implementation in class zbp_cine_i_ticket unique;
+strict ( 2 );
+
+define behavior for ZCINE_I_TICKET //alias <alias_name>
+persistent table zcine_a_buy
+lock master
+authorization master ( instance )
+with additional save
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly, numbering : managed ) Id;
+  field ( readonly ) TotalPrice, Rendered;
+  field ( mandatory ) Scheduleid, Seatid, Pricingtier, CurrencyCode;
+
+  static action ( authorization : global ) ResetDemo;
+  action( features : global ) RenderPDF result [1] uuid;
+  action( features : global ) PreviewPDF result [1] ZCINE_AE_PDF_OUTPUT;
+  action( features : global ) SendToPQ parameter ZCINE_AE_PQ_PARAM result [1] uuid;
+
+  mapping for ZCINE_A_BUY {
+    CurrencyCode  = currency;
+    Id            = id;
+    Pricingtier   = pricingtier;
+    Scheduleid    = scheduleid;
+    Seatid        = seatid;
+    Rendered      = rendered;
+  }
+}

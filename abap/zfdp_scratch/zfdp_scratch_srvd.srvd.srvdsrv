@@ -1,0 +1,5 @@
+@EndUserText.label: 'Simple form data provider'
+@ObjectModel.leadingEntity.name: 'ZCE_FDP_SCRATCH_ROOT'
+define service ZFDP_SCRATCH_SRVD {
+  expose ZCE_FDP_SCRATCH_ROOT;
+}

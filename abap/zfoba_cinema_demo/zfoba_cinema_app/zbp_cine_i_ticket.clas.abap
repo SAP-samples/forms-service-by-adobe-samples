@@ -1,0 +1,8 @@
+CLASS zbp_cine_i_ticket DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zcine_i_ticket.
+  PUBLIC SECTION.
+    CLASS-DATA ct_processes TYPE STANDARD TABLE OF REF TO if_bgmc_process.
+ENDCLASS.
+
+
+CLASS zbp_cine_i_ticket IMPLEMENTATION.
+ENDCLASS.

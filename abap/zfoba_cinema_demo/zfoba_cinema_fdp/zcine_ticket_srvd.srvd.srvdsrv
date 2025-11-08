@@ -1,0 +1,9 @@
+@EndUserText.label: 'Cinema Demo - Service Definition'
+@ObjectModel.leadingEntity.name: 'ZCINE_I_TICKET'
+define service ZCINE_TICKET_SRVD {
+  expose ZCINE_I_TICKET as Ticket;
+  expose ZCINE_I_MOVIE  as Movie;
+  expose ZCINE_I_ROOM   as Room;
+  expose ZCINE_I_SEAT   as Seat;
+  expose ZCINE_I_CAL    as Schedule;
+}
