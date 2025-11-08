@@ -11,6 +11,9 @@
     <item>/README.md</item>
     <item>/.reuse</item>
     <item>/images</item>
+    <item>/ui</item>
+	<item>/forms</item>
+	<item>/docs</item>
    </IGNORE>
   </DATA>
  </asx:values>

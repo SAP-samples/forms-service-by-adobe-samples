@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema version="2" xmlns:xfadata="http://www.xfa.org/schema/xfa-data/1.0/">
+  <element name="Form">
+    <complexType>
+      <sequence>
+        <element name="Ticket" type="Ticket" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="Schedule">
+    <sequence>
+      <element name="Id">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Begindate">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="10" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Enddate">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="10" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Begintime">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="8" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Endtime">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="8" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Movieid">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Roomid">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Movie" type="Movie" minOccurs="1" maxOccurs="1" />
+      <element name="Room" type="Room" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="Movie">
+    <sequence>
+      <element name="Id">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Title">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Description">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Duration">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="long" />
+        </simpleType>
+      </element>
+      <element name="Logo">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Room">
+    <sequence>
+      <element name="Id">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Name">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Address">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Zip">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Country">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Seat">
+    <sequence>
+      <element name="Id">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Roomid">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Name">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Pricetier">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="short">
+            <minInclusive value="-128" />
+            <maxInclusive value="127" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Room" type="Room" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="Ticket">
+    <sequence>
+      <element name="Id">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Scheduleid">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Seatid">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="32" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Pricingtier">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="short">
+            <minInclusive value="-128" />
+            <maxInclusive value="127" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="CurrencyCode">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="5" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="TotalPrice">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="21" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Pdf">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Rendered">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="Truth Value" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="1" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Schedule" type="Schedule" minOccurs="1" maxOccurs="1" />
+      <element name="Seat" type="Seat" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+</schema>

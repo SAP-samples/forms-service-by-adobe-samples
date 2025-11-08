@@ -1,0 +1,99 @@
+<mvc:View 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:unified="sap.ui.unified"
+    xmlns="sap.m" 
+    xmlns:macros="sap.fe.macros"
+    xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.fp.demo.cinema.ext.main.Main">
+    <Page id="Main" title="{i18n>MainTitle}">
+        <content>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="Reset Demo" press="onResetDemo"/>
+            </Toolbar>
+            <PlanningCalendar 
+                startDate="{viewModel>/startDate}"
+                appointmentSelect="onScheduleSelected"
+                id="calendar"
+                rows="{path: '/Room', templateShareable: false}"
+            >
+                <rows>
+                    <PlanningCalendarRow
+                        title="{Name}"
+                        text="{Address}"
+                        modelContextChange="updateRoomCalRow"
+                    >                
+                    </PlanningCalendarRow>
+                </rows>
+            </PlanningCalendar>
+            <Table 
+                items="{
+                    parameters: {
+                        expand: 'Seat, Schedule.Room, Schedule.Movie'
+                    },
+                    path: '/Ticket',
+                    templateShareable: false,
+                    filters: [
+                        {path: 'Rendered', operator: 'EQ', value1: 'true' }
+                    ]
+                }"
+            >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="Generated Tickets" level="H2"/>
+                            <ToolbarSpacer />
+                            <OverflowToolbarButton icon="sap-icon://refresh" press="onTicketRefresh" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                    width="20em">
+                        <Text text="TicketID" />
+                    </Column>
+                    <Column
+                    width="12em">
+                        <Text text="Movie" />
+                    </Column>
+                    <Column
+                    width="12em">
+                        <Text text="Room" />
+                    </Column>
+                    <Column
+                    width="12em">
+                        <Text text="Seat" />
+                    </Column>
+                    <Column
+                    width="12em">
+                        <Text text="Start Time" />
+                    </Column>
+                    <Column
+                    width="10em">
+                        <Text text="Actions" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text
+                                text="{path: 'Id'}" />
+                            <Text
+                                text="{path: 'Schedule/Movie/Title'}" />
+                            <Text
+                                text="{path: 'Schedule/Room/Name' }" />
+                            <Text
+                                text="{path: 'Seat/Name' }" />
+                            <Text
+                                text="{path: 'Schedule/Begintime'}" />
+                            <HBox>
+                                <Button icon="sap-icon://pdf-attachment" press="onShowPDF" tooltip="Show PDF"/>
+                                <Button icon="sap-icon://print" press="onSendPDFToPQ" tooltip="Generate PDF and sent to PQ"/>
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

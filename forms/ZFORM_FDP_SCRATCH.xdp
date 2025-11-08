@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xfa generator="AdobeLiveCycleDesigner_V11.0.9.20240701.1.52_SAP" APIVersion="3.6.24183.0"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2025-11-01T19:53:36Z" uuid="577c3de5-55ff-4f1e-b529-6dc426f058e0">
+<template xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1" xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
+   <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
+   <subform name="Form" layout="tb" locale="ambient" restoreState="auto">
+      <pageSet>
+         <pageArea name="Page1" id="Page1">
+            <contentArea x="0.25in" y="0.25in" w="8in" h="10.5in"/>
+            <medium stock="letter" short="8.5in" long="11in"/>
+            <?templateDesigner expand 1?></pageArea>
+         <?templateDesigner expand 1?></pageSet>
+      <subform w="8in" h="10.5in">
+         <subform name="ZCE_FDP_SCRATCH_ROOT" x="3.175mm" y="3.175mm">
+            <margin leftInset="1mm" rightInset="1mm" topInset="1mm" bottomInset="1mm"/>
+            <field name="name" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="52B7D477-48E2-4D03-983B-9F454DE631D2">Name</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$.name"/>
+            </field>
+            <field name="language" x="2.440944in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="508232B7-338A-4577-BBD1-F4C56300A4A8">Language</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="1"/>
+               </value>
+               <bind match="dataRef" ref="$.language"/>
+            </field>
+            <field name="iso" x="4.881889in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="4D778D72-A9D6-491E-805A-4B8F4AE97DA8">Iso</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="2"/>
+               </value>
+               <bind match="dataRef" ref="$.iso"/>
+            </field>
+            <field name="userAlias" y="0.354333in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="FCFEDCE9-8199-492E-8646-9BDA86EF7249">User Alias</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$.userAlias"/>
+            </field>
+            <field name="tz" y="0.354333in" x="2.440944in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="7BF11EF1-771B-434C-89C4-4E9C54B9F793">Tz</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="6"/>
+               </value>
+               <bind match="dataRef" ref="$.tz"/>
+            </field>
+            <field name="syDate" y="0.354333in" x="4.881889in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="5579A93A-6A66-4D00-9C2F-3FC56B881E54">Sy Date</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="8"/>
+               </value>
+               <bind match="dataRef" ref="$.syDate"/>
+            </field>
+            <field name="syTime" y="0.708667in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="E86A4ABB-FB12-4012-8CC1-BAF256A8C4F4">Sy Time</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="6"/>
+               </value>
+               <bind match="dataRef" ref="$.syTime"/>
+            </field>
+            <field name="syURL" y="0.708667in" x="2.440944in" w="62mm" h="9mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin topInset="1mm" bottomInset="1mm" leftInset="1mm" rightInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="25mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="E2EC5FB3-A251-41B7-98F0-F4A58C37A306">Sy URL</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$.syURL"/>
+            </field>
+            <bind match="dataRef" ref="$.ZCE_FDP_SCRATCH_ROOT"/>
+            <?templateDesigner expand 1?></subform>
+         <?templateDesigner expand 1?></subform>
+      <proto/>
+      <desc>
+         <text name="version">11.0.9.20240701.1.52.2</text>
+      </desc>
+      <?templateDesigner expand 1?>
+      <?renderCache.subset "Arial" 0 0 ISO-8859-1 4 96 24 000300240027002C002F0031003500360037003800440048004A004C004F0050005100520055005600570058005C005D ADILNRSTUaegilmnorstuyz?></subform>
+   <?templateDesigner DefaultPreviewDynamic 1?>
+   <?templateDesigner DefaultRunAt client?>
+   <?templateDesigner Grid show:1, snap:1, units:0, color:ff8080, origin:(0,0), interval:(125000,125000)?>
+   <?templateDesigner WidowOrphanControl 0?>
+   <?templateDesigner DefaultCaptionFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultValueFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultLanguage JavaScript?>
+   <?acrobat JavaScript strictScoping?>
+   <?templateDesigner SaveTaggedPDF 0?>
+   <?templateDesigner SavePDFWithEmbeddedFonts 0?>
+   <?templateDesigner SavePDFWithLog 0?>
+   <?templateDesigner FormTargetVersion 33?>
+   <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
+   <?templateDesigner Zoom 173?></template>
+<config xmlns="http://www.xfa.org/schema/xci/3.0/">
+   <agent name="designer">
+      <!--  [0..n]  -->
+      <destination>pdf</destination>
+      <pdf>
+         <!--  [0..n]  -->
+         <fontInfo/>
+      </pdf>
+   </agent>
+   <present>
+      <!--  [0..n]  -->
+      <pdf>
+         <!--  [0..n]  -->
+         <version>1.7</version>
+         <adobeExtensionLevel>8</adobeExtensionLevel>
+      </pdf>
+      <common>
+         <data>
+            <xsl>
+               <uri/>
+            </xsl>
+            <outputXSL>
+               <uri/>
+            </outputXSL>
+         </data>
+      </common>
+      <xdp>
+         <packets>*</packets>
+      </xdp>
+   </present>
+</config>
+<localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/"/>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.0-c000 79.cca54b0, 2022/11/26-09:29:55        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:pdfuaid="http://www.aiim.org/pdfua/ns/id/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:desc="http://ns.adobe.com/xfa/promoted-desc/" rdf:about="">
+         <xmp:MetadataDate>2025-11-01T19:53:36Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
+         <pdfuaid:part>1</pdfuaid:part>
+         <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
+         <xmpMM:DocumentID>uuid:577c3de5-55ff-4f1e-b529-6dc426f058e0</xmpMM:DocumentID>
+         <desc:version rdf:parseType="Resource">
+            <rdf:value>11.0.9.20240701.1.52.2</rdf:value>
+            <desc:ref>/template/subform[1]</desc:ref>
+         </desc:version>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+<connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/">
+   <xsdConnection name="DataConnection" dataDescription="Form">
+      <uri>.\scratch.xsd</uri>
+      <rootElement>Form</rootElement>
+      <?templateDesigner fileDigest shaHash="2INhsx5arUxgH8hTsk+Fc/NLnGY="?></xsdConnection>
+</connectionSet>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+   <xfa:data xfa:dataNode="dataGroup"/>
+   <dd:dataDescription xmlns:dd="http://ns.adobe.com/data-description/" dd:name="Form">
+      <Form>
+         <xFDPTxCE_SCRATCH_ROOT>
+            <name/>
+            <language/>
+            <iso/>
+            <userAlias/>
+            <tz/>
+            <syDate/>
+            <syTime/>
+            <syURL/>
+         </xFDPTxCE_SCRATCH_ROOT>
+      </Form>
+   </dd:dataDescription>
+</xfa:datasets></xdp:xdp>

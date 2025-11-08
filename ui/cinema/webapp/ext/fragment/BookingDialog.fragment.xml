@@ -1,0 +1,63 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:control="com.sap.fp.demo.cinema.ext.control">
+   <Dialog
+    id="ticketbookerdiag"
+    title="Book your ticket"
+    resizable="true"
+    draggable="true"
+    >
+      <content>
+         <VBox class="sapUiSmallMargin">
+            <HBox>
+               <Image src="{path: 'Movie/Logo', formatter: '.toImg', targetType:'any'}" width="200px" height="200px" />
+               <Panel>
+                  <headerToolbar>
+                     <OverflowToolbar>
+                           <Title text="Overview"/>
+                     </OverflowToolbar>
+                  </headerToolbar>
+                  <content>
+                     <VBox>
+                        <Title text="{path: 'Movie/Title'}" />
+                        <Text text="{path: 'Movie/Description'}" />
+                     </VBox>
+                  </content>
+               </Panel>
+            </HBox>
+            <Panel>
+               <headerToolbar>
+                  <OverflowToolbar>
+                     <Title text="Booking Details"/>
+                  </OverflowToolbar>
+               </headerToolbar>
+               <content>
+                  <VBox>
+                     <Title text="Choose Ticket Category" />
+                     <RadioButtonGroup id="rpt" selectedIndex="{path: 'bookingModel>/personPriceTier'}">
+                        <RadioButton id="rpt-1" text="Child" />
+                        <RadioButton id="rpt-2" text="Student" />
+                        <RadioButton id="rpt-3" text="Adult" />
+                     </RadioButtonGroup>
+                     <Title text="Choose Seat" />
+                     <control:SeatBooker
+                        seats="{path: 'bookingModel>/seats'}"
+                        row="{path: 'bookingModel>/row'}"
+                        column="{path: 'bookingModel>/column'}"
+                        select="{path: 'bookingModel>/selected'}"
+                     />
+                  </VBox>
+               </content>
+            </Panel>
+            
+         </VBox>
+      </content>
+      <beginButton>
+         <Button type="Emphasized" text="Book" press="onBook"></Button>
+      </beginButton>
+      <endButton>
+         <Button type="Reject" text="Cancel" press="onClose"></Button>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

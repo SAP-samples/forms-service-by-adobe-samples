@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.sap.fp.demo.cinema
+type: application
+builder:
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://XXX.ondemand.com
+          client: '100'
+          scp: true
+        app:
+          name: ZCIN_BSP_DEMO
+          description: FDP Cinema DEMO
+          package: ZFOBA_CINEMA_APP
+          transport: 
+        exclude:
+          - /test/
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

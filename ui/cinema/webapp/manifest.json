@@ -1,0 +1,132 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.sap.fp.demo.cinema",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:fpm",
+      "version": "1.17.6",
+      "toolsId": "54d4ebd8-863a-456a-9870-2d133919c0ad"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zcine_app_ui_sb/srvd_a2x/sap/zcine_ticket_srvd/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Cinema-maintain": {
+          "semanticObject": "Cinema",
+          "action": "maintain",
+          "title": "{{Cinema-maintain.flpTitle}}",
+          "subTitle": "{{Cinema-maintain.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.140.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.fp.demo.cinema.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "name": "TicketMain",
+          "pattern": ":?query:",
+          "target": "TicketMain"
+        }
+      ],
+      "targets": {
+        "TicketMain": {
+          "type": "Component",
+          "id": "TicketMain",
+          "name": "sap.fe.core.fpm",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Ticket",
+              "viewName": "com.sap.fp.demo.cinema.ext.main.Main"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {}
+}

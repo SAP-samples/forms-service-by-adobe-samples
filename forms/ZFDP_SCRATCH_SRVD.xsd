@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema version="2" xmlns:xfadata="http://www.xfa.org/schema/xfa-data/1.0/">
+  <element name="Form">
+    <complexType>
+      <sequence>
+        <element name="ZCE_FDP_SCRATCH_ROOT" type="ZCE_FDP_SCRATCH_ROOT" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="ZCE_FDP_SCRATCH_ROOT">
+    <sequence>
+      <element name="name">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="language">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="1" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="iso">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="2" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="userAlias">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="tz">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="6" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="syDate">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="8" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="syTime">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="6" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="syURL">
+        <annotation xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <appinfo dc:title="" />
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="0" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Preview Form Data Provider Utility</title>
+    <script id="sap-ui-bootstrap"
+        src="https://ui5.sap.com/1.136/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_fiori_3"
+        data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true">
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function() {
+         // Create form with input fields
+          var oModel = new sap.ui.model.json.JSONModel({
+            name: "",
+            outputFormats: [{name: "Form Data Provider Service Binding", value: "FDP"}, {name: "Form Template", value: "PDF"}],
+            logs: "",
+            keys: [],
+            errors: {
+                name: {
+                    state: "None",
+                    error: ""
+                }
+            },
+            selectedOutput: "PDF"
+          });
+
+          var oForm = new sap.ui.layout.form.SimpleForm({
+                editable: true,
+                layout: "ResponsiveGridLayout",
+                content: [
+                    new sap.m.Label({text: "Name"}),
+                    new sap.m.Input({value: "{/name}", valueState: "{/errors/name/state}", valueStateText:"{/errors/name/error}"}),
+                    new sap.m.Label({text: "Input Type"}),
+                    new sap.m.Select({
+                        selectedKey: "{/selectedOutput}",
+                        items: {
+                            path: "/outputFormats",
+                            template: new sap.ui.core.Item({
+                                key: "{value}",
+                                text: "{name}"
+                            })
+                        }
+                    }),
+                    new sap.m.Label({text: ""}),
+                    new sap.m.Button({
+                        text: "Load Keys",
+                        press: async (oEvent) => {
+                            oModel.setProperty("/errors/name/state", "None")
+                            oModel.setProperty("/errors/name/error", "")
+                            const formData = new FormData();
+                            formData.append("name", oModel.getProperty("/name") )
+                            formData.append("type", oModel.getProperty("/selectedOutput") )
+                            try{
+                                sap.ui.core.BusyIndicator.show()
+                                const resp = await fetch(`/sap/bc/http/sap/ZFDP_PREVIEWER_HTTP/keys?sap-client=XXX`, {
+                                    method: "post",
+                                    body: formData
+                                })
+                                sap.ui.core.BusyIndicator.hide()
+                                const keys = await resp.json()
+                                oModel.setProperty("/keys", keys)
+                            } catch (e) {
+                                sap.ui.core.BusyIndicator.hide()
+                                oModel.setProperty("/errors/name/state", "Error")
+                                oModel.setProperty("/errors/name/error", "Invalid name")
+                            }
+                        }
+                    }),
+                ]
+            });
+            
+            var oList = new sap.m.List({
+                items: {
+                    path: "/keys",
+                    template: new sap.m.InputListItem({
+                        label: "{NAME}",
+                        content: new sap.m.Input({value: "{VALUE}"})
+                    })
+                }
+            })
+
+            // Create PDF viewer (using HTML object for PDF)
+            var oPDFViewer = new sap.m.PDFViewer({
+                isTrustedSource: true,
+                height: "800px"
+            });
+            jQuery.sap.addUrlWhitelist("blob");
+            var oButton = new sap.m.Button({
+                text: "Execute",
+                width:"100%",
+                press: async () => {
+                    const base64ToBlob = (pdf) => {
+                        var base64EncodedPDF = pdf; // the encoded string
+                        var decodedPdfContent = atob(base64EncodedPDF);
+                        var byteArray = new Uint8Array(decodedPdfContent.length);
+                        for (var i = 0; i < decodedPdfContent.length; i++) {
+                            byteArray[i] = decodedPdfContent.charCodeAt(i);
+                        }
+                        var blob = new Blob([byteArray.buffer], { type: "application/pdf" });
+                        return URL.createObjectURL(blob);
+                    }
+                    oModel.setProperty("/logs", "")
+                    const formData = new FormData();
+                    formData.append("name", oModel.getProperty("/name") )
+                    formData.append("type", oModel.getProperty("/selectedOutput") )
+                    formData.append("input",JSON.stringify(oModel.getProperty("/keys")) )
+                    try{
+                        sap.ui.core.BusyIndicator.show()
+                        const resp = await fetch(`/sap/bc/http/sap/ZFDP_PREVIEWER_HTTP/exec?sap-client=XXX`, {
+                            method: "post",
+                            body: formData
+                        })
+                        sap.ui.core.BusyIndicator.hide()
+                        if (resp.ok) {
+                            const output = await resp.json()
+                            if (output.PDF) {
+                                var _pdfurl = base64ToBlob(output.PDF);
+                                oPDFViewer.setSource(_pdfurl);
+                                oPDFViewer.setTitle(`Preview Document`);
+                            }
+                            oModel.setProperty("/logs", output.LOGS)
+                        } else {
+                            const statusMsg = await resp.text()
+                            oModel.setProperty("/logs", statusMsg)
+                        }
+
+                    } catch (e) {
+                        sap.ui.core.BusyIndicator.hide()
+                        oModel.setProperty("/logs", e.message)
+                    }
+                }
+            })
+
+            // Create left panel with form and table
+            var oLeftPanel = new sap.m.VBox({
+                items: [oForm, oList, oButton]
+            });
+            
+
+            // Create text area
+            var oTextArea = new sap.m.TextArea({
+                width: "100%",
+                height: "400px",
+                placeholder: "Logs will be shown here...",
+                value: "{/logs}"
+            });
+
+            // Create secondary split layout (right panel)
+            var oSecondarySplitter = new sap.ui.layout.Splitter({
+                orientation: "Vertical",
+                contentAreas: [
+                    oPDFViewer, oTextArea
+                ]
+            });
+
+            // Create main vertical splitter
+            var oMainSplitter = new sap.ui.layout.Splitter({
+                orientation: "Horizontal",
+                contentAreas: [
+                    new sap.m.Panel({
+                        headerText: "Input values",
+                        content: [oLeftPanel]
+                    }),
+                    new sap.m.Panel({
+                        headerText: "Viewer & Logs",
+                        content: [oSecondarySplitter]
+                    })
+                ]
+            });
+
+            // Create and place the app
+            var oApp = new sap.m.App({
+                pages: [
+                    new sap.m.Page({
+                        title: "Preview Form Data Provider Utility",
+                        content: [oMainSplitter]
+                    })
+                ]
+            });
+
+            oApp.placeAt("content");
+            oApp.setModel(oModel);
+        });
+    </script>
+</head>
+<body class="sapUiBody">
+    <div id="content"></div>
+</body>
+</html>
