@@ -20,7 +20,7 @@ If you are using S/4 HANA Public Cloud Edition, skip this section.
 :::
 [Discovery Link](https://discovery-center.cloud.sap/serviceCatalog/forms-service-by-adobe/?region=all)
 
-Subscribe to the service in your BTP subaccount. See Section: [Setup the systems](/getting_started.html#setup-the-systems) for a detailed guide
+Subscribe to the service in your BTP subaccount. See Section: [Setup the systems](/getting_started/connect_foba.md) for a detailed guide
 
 ### Software
 #### Visual Studio Code
