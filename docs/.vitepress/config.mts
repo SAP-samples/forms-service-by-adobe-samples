@@ -14,6 +14,7 @@ const loadSyntax = async (file: string, name: string, alias: string = name): Pro
 export default defineConfig({
   title: "Form Development Guide",
   description: "Kickstart your cloud document generation journey by example",
+  base: "/forms-service-by-adobe-samples/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
