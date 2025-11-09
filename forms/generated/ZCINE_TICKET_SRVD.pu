@@ -1,0 +1,59 @@
+@startuml
+
+Form "1" - "1" Ticket
+Ticket "1" -- "1" Schedule
+Ticket "1" -- "1" Seat
+Schedule "1" -. "1" Room
+Schedule "1" - "1" Movie
+
+
+class Form {
+    +Ticket : Ticket
+}
+
+class Movie {
+    +Id : string
+    +Title : string
+    +Description : string
+    +Duration : long
+    +Logo : string
+}
+class Room {
+    +Id : string
+    +Name : string
+    +Address : string
+    +Zip : string
+    +Country : string
+}
+class Schedule {
+    +Id : string
+    +Begindate : string
+    +Enddate : string
+    +Begintime : string
+    +Endtime : string
+    +Movieid : string
+    +Roomid : string
+    +Movie : Movie
+    +Room : Room
+}
+class Seat {
+    +Id : string
+    +Roomid : string
+    +Name : string
+    +Pricetier : short
+    +Room : string
+}
+class Ticket {
+    +Id : string
+    +Scheduleid : string
+    +Seatid : string
+    +Pricingtier : short
+    +CurrencyCode : string
+    +TotalPrice : string
+    +Pdf : string
+    +Rendered : string
+    +Schedule : Schedule
+    +Seat : Seat
+}
+
+@enduml

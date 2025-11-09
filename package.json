@@ -1,0 +1,22 @@
+{
+  "name": "forms-service-by-adobe-samples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "@mdit/plugin-footnote": "^0.22.3",
+    "@types/node": "^24.10.0",
+    "vitepress": "^2.0.0-alpha.12",
+    "vitepress-plugin-lightbox": "^1.0.3"
+  }
+}
