@@ -48,6 +48,7 @@ Press upload and select your local font file
 ### Clone the ABAPgit sample package
 1. Clone the following package and all of its sub packages to the system: [ZFOBA_CINEMA_DEMO](https://github.com/SAP-samples/forms-service-by-adobe-samples/tree/main/abap/zfoba_cinema_demo)
 2. Locally publish the service binding **ZCINE_APP_UI_SB**
+3. Run ZCL_FDP_CINEMA_FILL_DATA once in ADT, to reset and populate demo data to the system. This can be repeated later directly in the app. 
 
 ### Upload the UI5 App
 A detailed guide is available [here](https://developers.sap.com/tutorials/abap-environment-vs-code..html)
