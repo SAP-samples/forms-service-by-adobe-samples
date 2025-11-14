@@ -22,13 +22,14 @@ Preview:
 3. Enable embed font usage, so custom fonts will be embedded to the output
 
 ### Upload custom font
+Download the [SAP-Icon Font](https://github.com/SAP-samples/forms-service-by-adobe-samples/raw/refs/heads/main/forms/SAP-icons.ttf) and follow the system specific section below.
 
 #### S/4 HANA Cloud Public Edition
 1. Navigate to the app: [**Adobe Document Services Config**](https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#/detail/Apps('F4971'))
 ::: tip
 Your user needs the role: **SAP_BR_XXXISTRATOR** to see the app
 :::
-2. Download the [SAP-Icon Font](https://github.com/SAP-samples/forms-service-by-adobe-samples/raw/refs/heads/main/forms/SAP-icons.ttf) and upload it via the app
+2. Upload the font
 ![Upload font](/images/F4971_1.png)
 3. If everything works and you press: **Go**, the fonts should appear in the list
 ![Upload font success](/images/F4971_2.png)
