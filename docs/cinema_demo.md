@@ -21,6 +21,8 @@ Preview:
 ![Upload ZF_CINE_TICKET](/images/FORM_ZF_CINE_TICKET.png)
 3. Enable embed font usage, so custom fonts will be embedded to the output
 
+### Upload custom font
+
 #### S/4 HANA Cloud Public Edition
 1. Navigate to the app: [**Adobe Document Services Config**](https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#/detail/Apps('F4971'))
 ::: tip
