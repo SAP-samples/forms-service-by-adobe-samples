@@ -133,7 +133,7 @@ DATA(form) = DATA(form) = cl_fp_form_reader=>create_form_reader( CONV #( |ZFORM_
 DATA(util) = cl_fp_fdp_services=>get_instance( form->get_fdp_name( ) ).
 DATA(keys) = util->get_keys( ).
 keys[ name = 'NAME' ]-value = sy-uname.
-DATA(data) = util->read_to_xml_v2( keys ).
+DATA(xml) = util->read_to_xml_v2( keys ).
 cl_fp_ads_util=>render_pdf( 
     EXPORTING 
         iv_locale       = 'en_US'
@@ -149,7 +149,7 @@ cl_fp_ads_util=>render_pdf(
         ev_trace_string = DATA(logs) 
 ).
 "If you want to output pdfs to a UI, convert xstream to base64
-output-pdf  = cl_web_http_utility=>encode_x_base64( pdf ).
+DATA(output)  = cl_web_http_utility=>encode_x_base64( pdf ).
 ```
 
 ### Preview PDF using Previewer.
