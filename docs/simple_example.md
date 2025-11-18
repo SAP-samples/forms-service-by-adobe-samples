@@ -126,7 +126,7 @@ You need to manually upload the form template to the ABAP system.
     ![Completed](/images/FORM_SCRATCH_ADT_3.png)
 
 ### Adjust the class
-After creating a new form object, it can be used via ABAP reuse class.
+After creating a new form object, it can be used via ABAP reuse class([Online Help](https://help.sap.com/docs/btp/sap-business-technology-platform/print-forms))
 
 ```abap
 DATA(form) = DATA(form) = cl_fp_form_reader=>create_form_reader( CONV #( |ZFORM_FDP_SCRATCH| ) ).
