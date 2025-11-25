@@ -2,6 +2,7 @@
 
 ## Links to Online Help
 Reuse classes: [Click here](https://help.sap.com/docs/btp/sap-business-technology-platform/print-forms)
+
 Form ADT Usage: [Click here](https://help.sap.com/docs/abap-cloud/abap-development-tools-user-guide/working-with-forms)
 
 ## Is this guide applicable for S/4 HANA Public Cloud Edition
