@@ -4,7 +4,7 @@
 
 Example projects to illustrate how the SAP Forms Service by Adobe could be integrated into various projects and platforms.
 Overview:
- - [Integrate SAP Forms Service by Adobe with ABAP Environment](https://github.com/SAP-samples/forms-service-by-adobe-samples/tree/main/abap)
+ - [Integrate SAP Forms Service by Adobe with ABAP Environment](https://sap-samples.github.io/forms-service-by-adobe-samples/)
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
@@ -48,4 +48,4 @@ These eight requirements are the mandatory base of a good bug report:
 7. Only one bug per report: open different tickets for different issues
 
 ## License
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
